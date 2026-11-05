@@ -1,0 +1,98 @@
+---
+title: "Central Park Weather, 2010"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+data("ny_noaa")
+
+# Select Central Park weather records for 2010
+weather_data =
+  ny_noaa |>
+  filter(
+    id == "USW00094728",
+    date >= "2010-01-01",
+    date <= "2010-12-31"
+  ) |>
+  mutate(
+    tmax_c = as.numeric(tmax) / 10,
+    month = lubridate::month(date, label = TRUE)
+  )
+```
+
+Column {data-width=600}
+-------------------------------------
+
+# Daily maximum temperature
+
+```{r}
+temperature_plot =
+  weather_data |>
+  ggplot(aes(x = date, y = tmax_c)) +
+  geom_line(color = "steelblue") +
+  labs(
+    x = "Date",
+    y = "Maximum temperature (°C)"
+  ) +
+  theme_minimal()
+
+ggplotly(temperature_plot)
+```
+
+Column {data-width=400}
+-------------------------------------
+
+# Maximum temperature by month
+
+```{r}
+distribution_plot =
+  weather_data |>
+  filter(!is.na(tmax_c)) |>
+  ggplot(aes(x = month, y = tmax_c)) +
+  geom_boxplot(
+    fill = "lightblue",
+    outlier.size = 1
+  ) +
+  labs(
+    x = "Month",
+    y = "Maximum temperature (°C)"
+  ) +
+  theme_minimal()
+
+ggplotly(distribution_plot)
+```
+
+# Recorded snowfall days by month
+
+```{r}
+snow_summary =
+  weather_data |>
+  group_by(month) |>
+  summarize(
+    observed_days = sum(!is.na(snow)),
+    snowfall_days = sum(snow > 0, na.rm = TRUE)
+  ) |>
+  filter(observed_days > 0)
+
+snow_plot =
+  snow_summary |>
+  ggplot(aes(x = month, y = snowfall_days)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Month",
+    y = "Days with recorded snowfall"
+  ) +
+  theme_minimal()
+
+ggplotly(snow_plot)
+```
+
+Counts include only days with recorded snowfall data.
+Months with no recorded snowfall data are omitted.
