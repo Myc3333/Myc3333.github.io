@@ -1,0 +1,17 @@
+name: "personal-website"
+output_dir: "."
+navbar:
+  title: "Yichuan Ma"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Resume"
+      href: resume.html
+  right:
+    - text: "GitHub"
+      href: https://github.com/Myc3333
+    - text: "Email"
+      href: "mailto:ym3197@cumc.columbia.edu"
+output:
+  html_document:
+    theme: flatly

@@ -1,0 +1,9 @@
+---
+title: "Home"
+---
+
+## Welcome
+
+Hello! My name is Yichuan Ma. I am a Biostatistics master's student at Columbia University Mailman School of Public Health.
+
+Welcome to my personal website!

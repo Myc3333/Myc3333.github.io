@@ -1,0 +1,30 @@
+---
+title: "Resume"
+---
+
+## Education
+
+**Columbia University Mailman School of Public Health**  
+Master of Science in Biostatistics, expected graduation in 2028
+
+**Jinan University–University of Birmingham Joint Institute**  
+Dual bachelor's degrees in Applied Mathematics and Mathematics
+
+## Professional Experience
+
+**Data Journalism Editor Trainee**, The Beijing News  
+July 2025 – September 2025
+
+- Collected and cleaned data for news stories.
+- Used statistics and visualizations to explain public health and consumer issues.
+
+**Research Assistant Intern**, Hebei Normal University  
+July 2024 – September 2024
+
+- Cleaned research data and built a catalyst dataset.
+- Used machine learning models to study factors affecting catalyst activity.
+
+## Skills
+
+- Programming and data analysis: Python, MATLAB, and basic SQL
+- Data visualization and machine learning
